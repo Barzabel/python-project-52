@@ -1,5 +1,6 @@
 databases:
   - name: task_manager
+    plan: free
     databaseName: task_manager_6vqx
     user: task_manager_6vqx_user
 
