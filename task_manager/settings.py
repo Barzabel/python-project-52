@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default=os.getenv('DATABASES'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600
     )
 }
