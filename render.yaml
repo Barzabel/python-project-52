@@ -10,7 +10,7 @@ services:
     name: task_manager
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn task_manager.wsgi:application"
+    startCommand: "python -m gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
