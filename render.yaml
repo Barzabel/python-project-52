@@ -1,0 +1,20 @@
+databases:
+  - name: task_manager
+    databaseName: task_manager_6vqx
+    user: task_manager_6vqx_user
+
+services:
+  - type: web
+    name: task_manager
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: task_manager
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
