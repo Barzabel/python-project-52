@@ -1,5 +1,5 @@
 databases:
-  - name: task_manager
+  - name: task_manager_db
     plan: free
     databaseName: task_manager_db
     user: task_manager_db_user
