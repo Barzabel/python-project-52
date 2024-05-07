@@ -2,6 +2,7 @@ __pycache__*
 *.pyc
 *.gz
 dict
+
 dist/*
 .DS_Store
 .venv/
