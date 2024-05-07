@@ -5,8 +5,10 @@ install:
 start_debug:
 	poetry run python manage.py runserver
 
+
+PORT ?= 8000
 start:
-	gunicorn task_manager.wsgi:application
+	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
 
 test:
 	poetry run coverage run --source='.' manage.py test
