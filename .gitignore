@@ -2,7 +2,7 @@ __pycache__*
 *.pyc
 *.gz
 dict
-
+staticfiles
 dist/*
 .DS_Store
 .venv/
