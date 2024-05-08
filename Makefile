@@ -8,7 +8,7 @@ start_debug:
 
 
 start:
-	poetry run gunicorn -w 4 -b 0.0.0.0:8000 task_manager.wsgi:application
+	poetry run gunicorn -w 4 -b 0.0.0.0:8000 task_manager.asgi:application -k uvicorn.workers.UvicornWorker
 
 test:
 	poetry run coverage run --source='.' manage.py test
