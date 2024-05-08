@@ -14,4 +14,3 @@ class IndexView(View):
                 'messages': messages_
             }
         )
-
