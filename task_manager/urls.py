@@ -23,3 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexView.as_view(), name='home'),
 ]
+
+"""
+/users/
+/login/
+/users/create/
+"""

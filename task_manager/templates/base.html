@@ -15,14 +15,14 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
-
+    {% include "hader.html" %}
     </header>
     <main class="container wrapper flex-grow-1">
         {% bootstrap_messages %}
         {% block content %}{% endblock %}
     </main>
     <footer>
-
+    {% include "footer.html" %}
     </footer>
     {% bootstrap_javascript %}
 </body>
