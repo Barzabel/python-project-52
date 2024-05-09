@@ -14,3 +14,7 @@ class IndexView(View):
                 'messages': messages_
             }
         )
+
+# create users
+# login
+# get all users
