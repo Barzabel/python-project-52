@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['task-manager-72nw.onrender.com', ".hexlet.app", "webserver", "
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

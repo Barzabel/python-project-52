@@ -6,7 +6,7 @@ class User(AbstractUser):
     pass
 
 
-class  Label(models.Model):
+class Label(models.Model):
     name = models.CharField(max_length=150, unique=True, blank=False,)
     created_at = models.DateTimeField(auto_now_add=True)
 
