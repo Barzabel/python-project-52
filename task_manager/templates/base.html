@@ -20,6 +20,7 @@
     <main class="container wrapper flex-grow-1">
         {% bootstrap_messages %}
         {% block content %}{% endblock %}
+        {{LANGUAGE_CODE}}
     </main>
     <footer>
     {% include "footer.html" %}
