@@ -3,6 +3,7 @@ __pycache__*
 *.gz
 dict
 staticfiles
+migrations
 dist/*
 .DS_Store
 .venv/
