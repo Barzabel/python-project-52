@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light ms-3">
-  <a class="navbar-brand" href="/">{% trans "Task manager" %}</a>
+  <a class="navbar-brand" href="{% url 'home' %}">{% trans "Task manager" %}</a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,10 +13,10 @@
     </ul>
     <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/login/">{% trans "Log In" %}</a>
+          <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/create/">{% trans "Sing up" %}</a>
+          <a class="nav-link" href="{% url 'singup' %}">{% trans "Sing up" %}</a>
         </li>
     </ul>
   </div>
