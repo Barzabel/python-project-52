@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block title %}
+    {% trans 'Log in' %}
+{% endblock %}
+
+
+{% block content %}
+<form method="POST" novalidate>
+	{% csrf_token %}
+	<h2>{% trans 'Log in' %}</h2>
+	{{form.as_p}}
+	<input type="submit" value="Login" />
+</form>
+	
+{% endblock %}
