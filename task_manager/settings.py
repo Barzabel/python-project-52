@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['task-manager-72nw.onrender.com', ".hexlet.app", "webserver", "localhost", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ['task-manager-u0op.onrender.com', ".hexlet.app", "webserver", "localhost", "127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
