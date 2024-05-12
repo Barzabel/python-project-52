@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['task-manager-u0op.onrender.com', ".hexlet.app", "webserver", "
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'task_manager',
-    'users',
-    'tasks',
+    'task_manager.users',
+    'task_manager.tasks'
 ]
 
 MIDDLEWARE = [
