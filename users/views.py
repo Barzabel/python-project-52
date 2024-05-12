@@ -3,23 +3,39 @@ from django.views import View
 from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from .models import User, Label, Status, Task, TaskLabels
-from django.contrib.auth.views import LoginView
+from .models import User
 from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
 from .forms import LoginUserForm, RegisterUserForm
+from .mixins import UserLoginMixin
 
-class IndexView(View):
+
+class UpdateUser(UserLoginMixin, View):
     def get(self, request, *args, **kwargs):
         messages_ = messages.get_messages(request)
-
+        user_id = 1
         return render(
             request,
-            'index.html',
+            'users/UpdateUser.html',
             context={
                 'messages': messages_
             }
         )
+
+
+
+class DeleteUser(UserLoginMixin, View):
+    def get(self, request, *args, **kwargs):
+        messages_ = messages.get_messages(request)
+        user_id = 1
+        return render(
+            request,
+            'users/DeleteUser.html',
+            context={
+                'messages': messages_
+            }
+        )
+
 
 
 
@@ -39,18 +55,9 @@ class UseersView(TemplateView):
         return context
 
 
-
-class LoginUser(LoginView):
-    form_class = LoginUserForm
-    template_name = 'users/login.html'
-
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'users/singup.html'
     success_url = reverse_lazy('login')
 
 
-
-# create users
-# login
-# get all users

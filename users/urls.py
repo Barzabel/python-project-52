@@ -1,14 +1,13 @@
 from django.urls import path
-from homepage import views
+from users import views
 from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='home'),
-    path('users/', views.UseersView.as_view(), name='users'),
-    path('users/create/', views.RegisterUser.as_view(), name='singup'),
-    path('login/', views.LoginUser.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('', views.UseersView.as_view(), name='users'),
+    path('create/', views.RegisterUser.as_view(), name='singup'),
+    path('<int:pk>/update/', views.UpdateUser.as_view(), name='update_user'),
+    path('<int:pk>/delete/', views.DeleteUser.as_view(), name='delete_user'),    
 ]
 
 
@@ -21,7 +20,5 @@ GET /users/<int:pk>/update/ — страница редактирования п
 POST /users/<int:pk>/update/ — обновление пользователя
 GET /users/<int:pk>/delete/ — страница удаления пользователя
 POST /users/<int:pk>/delete/ — удаление пользователя
-GET /login/ — страница входа +
-POST /login/ — аутентификация (вход) +
-POST /logout/ — завершение сессии (выход) ?
+
 """
