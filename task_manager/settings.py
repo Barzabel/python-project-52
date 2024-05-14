@@ -79,6 +79,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('home')
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

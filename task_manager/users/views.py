@@ -6,36 +6,36 @@ from django.utils.translation import gettext_lazy as _
 from .models import User
 from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
+from django.views.generic.edit import DeleteView, UpdateView
 from .forms import LoginUserForm, RegisterUserForm
 from .mixins import UserLoginMixin
 
 
-class UpdateUser(UserLoginMixin, View):
-    def get(self, request, *args, **kwargs):
-        messages_ = messages.get_messages(request)
-        user_id = 1
-        return render(
-            request,
-            'users/UpdateUser.html',
-            context={
-                'messages': messages_
-            }
-        )
+class UpdateUser(UserLoginMixin, UpdateView):
+    model = User
+    fields = ['username', 'email', 'first_name', 'last_name']
+    success_url = reverse_lazy("home")
+    template_name_suffix = "_update_form"
+    extra_context = {
+        'button_text': _('Yes'),
+    }
 
 
 
-class DeleteUser(UserLoginMixin, View):
-    def get(self, request, *args, **kwargs):
-        messages_ = messages.get_messages(request)
-        user_id = 1
-        return render(
-            request,
-            'users/DeleteUser.html',
-            context={
-                'messages': messages_
-            }
-        )
 
+class DeleteUser(UserLoginMixin, DeleteView):
+    model = User
+    success_url = reverse_lazy("home")
+
+    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_url = reverse_lazy('users')
+    protected_message = _('Unable to delete a user because he is being used')
+    protected_url = reverse_lazy('users')
+    success_message = _('User deleted')
+    success_url = reverse_lazy('users')
+    extra_context = {
+        'button_text': _('Yes'),
+    }
 
 
 

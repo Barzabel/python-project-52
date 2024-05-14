@@ -3,7 +3,6 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% get_current_language as LANGUAGE_CODE %}
-
 <!DOCTYPE html>
 <html lang="{{LANGUAGE_CODE}}">
 <head>
@@ -20,7 +19,6 @@
     <main class="container wrapper flex-grow-1">
         {% bootstrap_messages %}
         {% block content %}{% endblock %}
-        {{LANGUAGE_CODE}}
     </main>
     <footer>
     {% include "footer.html" %}
@@ -28,3 +26,5 @@
     {% bootstrap_javascript %}
 </body>
 </html>
+
+
