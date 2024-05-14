@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
 from django.contrib import messages
@@ -17,3 +17,18 @@ class UserLoginMixin(LoginRequiredMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
+class AuthorizationMixin(UserPassesTestMixin):
+    permission_denied_message = None
+    permission_denied_url = None
+
+    def test_func(self):
+        '''Check user'''
+
+        return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        '''If error permission,
+        we handle this error and redirect to denied url'''
+
+        messages.error(self.request, self.permission_denied_message)
+        return redirect(self.permission_denied_url)

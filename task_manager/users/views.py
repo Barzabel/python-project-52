@@ -8,12 +8,14 @@ from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 from .forms import LoginUserForm, RegisterUserForm
-from .mixins import UserLoginMixin
+from .mixins import UserLoginMixin, AuthorizationMixin
 
 
-class UpdateUser(UserLoginMixin, UpdateView):
+class UpdateUser(UserLoginMixin,AuthorizationMixin, UpdateView):
     model = User
     fields = ['username', 'email', 'first_name', 'last_name']
+    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy("home")
     template_name_suffix = "_update_form"
     extra_context = {
@@ -23,14 +25,12 @@ class UpdateUser(UserLoginMixin, UpdateView):
 
 
 
-class DeleteUser(UserLoginMixin, DeleteView):
+class DeleteUser(UserLoginMixin, AuthorizationMixin, DeleteView):
     model = User
     success_url = reverse_lazy("home")
 
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
-    protected_message = _('Unable to delete a user because he is being used')
-    protected_url = reverse_lazy('users')
     success_message = _('User deleted')
     success_url = reverse_lazy('users')
     extra_context = {

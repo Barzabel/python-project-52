@@ -13,34 +13,31 @@
                 <a class="nav-link" href="{% url 'users' %}">{% trans "Users" %}</a>
             </li>
             {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="">{% trans "Statuses" %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">{% trans "Labels" %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">{% trans "Tasks" %}</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">{% trans "Statuses" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">{% trans "Labels" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">{% trans "Tasks" %}</a>
+            </li>
             {% endif %}
             {% if user.is_authenticated %}
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">{{ user.username }}</a>
-                </li> -->
-                <li class="nav-item">
-                    <form action="{% url 'logout' %}" method="post">
-                      {% csrf_token %}
-                      <input class="btn nav-link" type="submit" value="{% trans 'Log Out' %}">
-                    </form>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'singup' %}">{% trans "Sign Up" %}</a>
-                </li>
-            {% endif %}
+        <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <input class="btm nav-link" type="submit" value="{% trans 'Log Out' %}">
+            </form>
+        </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'singup' %}">{% trans "Sign Up" %}</a>
+            </li>
+        {% endif %}
         </ul>
     </div>
 </nav>
