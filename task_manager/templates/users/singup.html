@@ -13,16 +13,16 @@
 {% block content %}
 
 
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next }}" />
-    <div class="form-error">{{ form.non_field_errors }}</div>
-    {% for f in form %}
-    <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-    <p><button type="submit">{% trans 'Sing up' %}</button></p>
-</form>
-
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+          </div>
+    </div>
+            
+    </form>
 
 {% endblock %}
