@@ -3,15 +3,15 @@ from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from .models import Task
+from .models import Status
 
 
-class TasksView(TemplateView):
-    template_name = "tasks/tasks.html"
+class StatusView(TemplateView):
+    template_name = "status/status.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks_list'] = Task.objects.all()
+        context['status_list'] = Status.objects.all()
 
         return context
 
@@ -20,3 +20,9 @@ class TasksView(TemplateView):
         messages_ = messages.get_messages(request)
         context['messages'] = messages_
         return context
+
+class UpdateStatus(TemplateView):
+    pass
+
+class DeleteStatus(TemplateView):
+    pass
