@@ -3,7 +3,7 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-    {% trans 'Sing up' %}
+    {% trans 'Statuses' %}
 {% endblock %}
 {% block content %}
 
@@ -16,6 +16,9 @@
           <div class="col">
             {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
           </div>
+        <div class="col">
+            <a href="{% url 'home' %}" class="btn btn-outline-danger">{% trans 'No' %}</a>
+        </div>
     </div>
             
     </form>

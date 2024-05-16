@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from .models import Status
+from .forms import CreateStatusForm
 
 
 class StatusView(TemplateView):
@@ -26,3 +28,11 @@ class UpdateStatus(TemplateView):
 
 class DeleteStatus(TemplateView):
     pass
+
+class CreateStatus(CreateView):
+    form_class = CreateStatusForm
+    template_name = "status/create_status.html"
+    success_url = reverse_lazy('login')
+    extra_context = {
+        'button_text': _('sing up'),
+    }
