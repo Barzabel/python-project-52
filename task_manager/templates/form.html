@@ -3,11 +3,11 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-    {% trans 'Sing up' %}
+    {{ title }}
 {% endblock %}
+
 {% block content %}
-
-
+    <h1>{{ title }}</h1>
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
@@ -16,8 +16,9 @@
           <div class="col">
             {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
           </div>
-    </div>
-            
+        <div class="col">
+            <a href="{% url 'home' %}" class="btn btn-outline-danger">{% trans 'No' %}</a>
+        </div>
+    </div>  
     </form>
-
 {% endblock %}

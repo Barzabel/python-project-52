@@ -31,8 +31,10 @@ class DeleteStatus(TemplateView):
 
 class CreateStatus(CreateView):
     form_class = CreateStatusForm
-    template_name = "status/create_status.html"
+    template_name = "form.html"
     success_url = reverse_lazy('login')
     extra_context = {
-        'button_text': _('sing up'),
+        'button_text': _('Yes'),
+        'title': _('create new status')
+
     }
