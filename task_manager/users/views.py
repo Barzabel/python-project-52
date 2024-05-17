@@ -8,11 +8,14 @@ from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 from .forms import LoginUserForm, RegisterUserForm
-from .mixins import UserLoginMixin, AuthorizationMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from task_manager.mixins import UserLoginMixin, AuthorizationMixin
 
 
-class UpdateUser(UserLoginMixin,AuthorizationMixin, UpdateView):
+class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = User
+    success_url = reverse_lazy('users')
+    success_message = _("the user has been successfully changed")
     fields = ['username', 'email', 'first_name', 'last_name']
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
@@ -22,16 +25,11 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, UpdateView):
         'button_text': _('Yes'),
     }
 
-
-
-
-class DeleteUser(UserLoginMixin, AuthorizationMixin, DeleteView):
+class DeleteUser(UserLoginMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
-    success_url = reverse_lazy("home")
-
+    success_message = _("the user has been deleted")
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
-    success_message = _('User deleted')
     success_url = reverse_lazy('users')
     extra_context = {
         'button_text': _('Yes'),
@@ -55,10 +53,11 @@ class UseersView(TemplateView):
         return context
 
 
-class RegisterUser(CreateView):
+class RegisterUser(SuccessMessageMixin, CreateView):
     form_class = RegisterUserForm
+    success_url = reverse_lazy('users')
+    success_message = _("the new user has been successfully created")
     template_name = 'form.html'
-    success_url = reverse_lazy('login')
     extra_context = {
         'button_text': _('sing up'),
         'title': _('sing up user')
