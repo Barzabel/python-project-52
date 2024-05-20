@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('task_manager.users.urls')),
     path('statuses/', include('task_manager.status.urls')),
+    path('tasks/', include('task_manager.tasks.urls')),
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]

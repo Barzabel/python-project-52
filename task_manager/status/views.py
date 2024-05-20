@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.views.generic.base import TemplateView
@@ -11,7 +10,7 @@ from .models import Status
 from .forms import CreateStatusForm
 
 
-class StatusView(TemplateView):
+class StatusView(UserLoginMixin, TemplateView):
     template_name = "status/status.html"
     auth_messages = None
     def get_context_data(self, **kwargs):

@@ -13,6 +13,7 @@
 {% endblock %}
 {% block content %}
     <h1 class="m-4">{% trans 'Users' %}</h1>
+    <a href="{% url 'create_task' %}">{% trans 'Create Task' %}</a>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
