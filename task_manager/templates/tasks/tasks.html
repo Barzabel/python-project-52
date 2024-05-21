@@ -12,31 +12,35 @@
     {% trans 'Users' %}
 {% endblock %}
 {% block content %}
-    <h1 class="m-4">{% trans 'Users' %}</h1>
+    <h1 class="m-4">{% trans 'Tasks' %}</h1>
     <a href="{% url 'create_task' %}">{% trans 'Create Task' %}</a>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>{% trans 'Username' %}</th>
-                <th>{% trans 'Full name' %}</th>
+                <th>{% trans 'name' %}</th>
+                <th>{% trans 'status' %}</th>
+                <th>{% trans 'author' %}</th>
+                <th>{% trans 'executor' %}</th>
                 <th>{% trans 'Creation date' %}</th>
                 <th></th>
             </tr>
         </thead>
 
         <tbody>
-            {% if users_list %}
-                {% for user in users_list %}
+            {% if tasks_list %}
+                {% for task in tasks_list %}
                     <tr>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.author }}</td>
+                        <td>{{ task.executor}}</td>
+                        <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                         <td>
-                          <a href="{% url 'update_user' pk=user.id %}">{% trans 'Update' %}</a>
+                          <!-- <a href="{% url 'update_user' pk=user.id %}">{% trans 'Update' %}</a>
                           <br>
-                          <a href="{% url 'delete_user' pk=user.id %}">{% trans 'Delete' %}</a>
+                          <a href="{% url 'delete_user' pk=user.id %}">{% trans 'Delete' %}</a> -->
                         </td>
                     </tr>
                 {% endfor %}

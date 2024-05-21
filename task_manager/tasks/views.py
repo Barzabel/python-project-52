@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin
 from .models import Task
-from .forms import CreateStatusForm
+from .forms import CreateTaskForm
 
 
 class TasksView(TemplateView):
@@ -27,7 +27,7 @@ class TasksView(TemplateView):
 
 class UpdateTask(UserLoginMixin, SuccessMessageMixin, UpdateView):
     model = Task
-    form_class = CreateStatusForm
+    form_class = CreateTaskForm
     template_name = "form.html"
     success_url = reverse_lazy('status_list')
     success_message = _("the status has been successfully changed")
@@ -47,7 +47,7 @@ class DeleteTask(UserLoginMixin, SuccessMessageMixin, DeleteView):
 
 
 class CreateTask(UserLoginMixin, SuccessMessageMixin, CreateView):
-    form_class = CreateStatusForm
+    form_class = CreateTaskForm
     template_name = "form.html"
     success_url = reverse_lazy('tasks_list')
     success_message = _("the new task has been successfully created")
