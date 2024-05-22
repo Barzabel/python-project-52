@@ -32,3 +32,13 @@ class AuthorizationMixin(UserPassesTestMixin):
 
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_denied_url)
+
+class IsAuthorMixin:
+    error_redirect_url = None
+    is_author_error_message = None
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_object().author.id != request.user.id:
+            messages.error(self.request, self.is_author_error_message)
+            return redirect(self.error_redirect_url)
+
+        return super().dispatch(request, *args, **kwargs)

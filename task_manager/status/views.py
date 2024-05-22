@@ -39,10 +39,12 @@ class UpdateStatus(UserLoginMixin, SuccessMessageMixin, UpdateView):
 
 class DeleteStatus(UserLoginMixin, SuccessMessageMixin, DeleteView):
     model = Status
+    template_name = 'delete.html'
     success_url = reverse_lazy('status_list')
     success_message = _("the status has been deleted")
     extra_context = {
         'button_text': _('Yes'),
+        'question': _('Are you sure that you want to delete this status ?')
     }
 
 

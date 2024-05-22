@@ -12,6 +12,8 @@
     {% trans 'Users' %}
 {% endblock %}
 {% block content %}
+
+
     <h1 class="m-4">{% trans 'Tasks' %}</h1>
     <a href="{% url 'create_task' %}">{% trans 'Create Task' %}</a>
     <table class="table table-striped">
@@ -32,15 +34,17 @@
                 {% for task in tasks_list %}
                     <tr>
                         <td>{{ task.id }}</td>
-                        <td>{{ task.name }}</td>
+                        <td>
+                            <a href="{% url 'task_ditail' pk=task.id %}">{{ task.name }}</a>
+                        </td>
                         <td>{{ task.status }}</td>
                         <td>{{ task.author }}</td>
                         <td>{{ task.executor}}</td>
                         <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                         <td>
-                          <!-- <a href="{% url 'update_user' pk=user.id %}">{% trans 'Update' %}</a>
+                          <a href="{% url 'update_task' pk=task.id %}">{% trans 'Update' %}</a>
                           <br>
-                          <a href="{% url 'delete_user' pk=user.id %}">{% trans 'Delete' %}</a> -->
+                          <a href="{% url 'delete_task' pk=task.id %}">{% trans 'Delete' %}</a>
                         </td>
                     </tr>
                 {% endfor %}

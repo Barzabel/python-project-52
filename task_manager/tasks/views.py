@@ -1,11 +1,13 @@
-from django.views.generic import CreateView
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic import (CreateView,
+                                  UpdateView,
+                                  DeleteView,
+                                  DetailView)
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
-from task_manager.mixins import UserLoginMixin
+from task_manager.mixins import UserLoginMixin, IsAuthorMixin
 from .models import Task
 from .forms import CreateTaskForm
 
@@ -25,24 +27,35 @@ class TasksView(TemplateView):
         context['messages'] = messages_
         return context
 
-class UpdateTask(UserLoginMixin, SuccessMessageMixin, UpdateView):
+class TasksDetailView(DetailView):
+    template_name = "tasks/tasks_detail.html"
+    model = Task
+
+
+class UpdateTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, UpdateView):
     model = Task
     form_class = CreateTaskForm
     template_name = "form.html"
-    success_url = reverse_lazy('status_list')
-    success_message = _("the status has been successfully changed")
+    error_redirect_url = reverse_lazy('tasks_list')
+    is_author_error_message = _("you can't change this task, you are not author")
+    success_url = reverse_lazy('tasks_list')
+    success_message = _("the task has been successfully changed")
     extra_context = {
         'button_text': _('Change'),
         'title': _('create new status')
 
     }
 
-class DeleteTask(UserLoginMixin, SuccessMessageMixin, DeleteView):
+class DeleteTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, DeleteView):
     model = Task
-    success_url = reverse_lazy('status_list')
-    success_message = _("the status has been deleted")
+    template_name = 'delete.html'
+    error_redirect_url = reverse_lazy('tasks_list')
+    is_author_error_message = _("you can't delete this task, you are not author")
+    success_url = reverse_lazy('tasks_list')
+    success_message = _("the task has been successfully delete")
     extra_context = {
         'button_text': _('Yes'),
+        'question': _('Are you sure that you want to delete this task ?'),
     }
 
 

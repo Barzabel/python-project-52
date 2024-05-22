@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+
+
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block title %}
+    {% trans 'Users' %}
+{% endblock %}
+{% block content %}
+
+
+<div class="container wrapper flex-grow-1">
+      
+
+
+      <h1 class="my-4">
+        {% trans 'Show task' %}
+      </h1>
+      
+<div class="card">
+  <div class="card-header bg-secondary text-white">
+    <h2>{{ task.name}}</h2>
+  </div>
+  <div class="card-body bg-light">
+    <p>{{ task.body }}</p>
+    <hr>
+    <div class="container">
+      <div class="row p-1">
+        <div class="col">Автор</div>
+        <div class="col">{{ task.author}}</div>
+      </div>
+      <div class="row p-1">
+        <div class="col">Исполнитель</div>
+        <div class="col">{{ task.executor}}</div>
+      </div>
+      <div class="row p-1">
+        <div class="col">Статус</div>
+        <div class="col">{{ task.status }}</div>
+      </div>
+      <div class="row p-1">
+        <div class="col">Дата создания</div>
+        <div class="col">{{ task.created_at|date:"d.m.Y H:i" }}</div>
+      </div>
+      <div class="row p-1">
+        <div class="col">
+          <h6>Метки:</h6>
+          <ul>
+            
+              <li>Меткая метка111</li>
+            
+              <li>цйукцй</li>
+            
+              <li>testy</li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="row p-1">
+        <div class="col">
+          <a href="{% url 'update_task' pk=task.id %}">{% trans 'Update' %}</a>
+          <br>
+          <a href="{% url 'delete_task' pk=task.id %}">{% trans 'Delete' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -28,11 +28,13 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateV
 class DeleteUser(UserLoginMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
     success_message = _("the user has been deleted")
+    template_name = 'delete.html'
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy('users')
     extra_context = {
         'button_text': _('Yes'),
+        'question': _('Are you sure that you want to delete this user?')
     }
 
 
