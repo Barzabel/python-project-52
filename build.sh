@@ -3,6 +3,11 @@
 make install
 
 poetry run python manage.py collectstatic --no-input
+
+#poetry run python manage.py sqlflush | poetry run python manage.py dbshell
+rm -rf `find . -type d -name  migrations`
+
+
 poetry run python manage.py makemigrations
 poetry run python manage.py migrate --run-syncdb
 
