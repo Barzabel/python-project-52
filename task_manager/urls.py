@@ -5,7 +5,7 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('users/', include('task_manager.users.urls')),
     path('statuses/', include('task_manager.status.urls')),
     path('tasks/', include('task_manager.tasks.urls')),
