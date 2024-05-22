@@ -11,7 +11,10 @@ poetry run python manage.py collectstatic --no-input
 
 
 
-poetry run python manage.py makemigrations
+poetry run python manage.py makemigrations 
+poetry run python manage.py makemigrations users
+poetry run python manage.py makemigrations status
+poetry run python manage.py makemigrations tasks
 poetry run python manage.py migrate 
 
 
