@@ -11,10 +11,19 @@
     {% trans 'Log in' %}
 {% endblock %}
 {% block content %}
-<form method="POST" novalidate>
-	{% csrf_token %}
-	<h2>{% trans 'Log in' %}</h2>
-	{{form.as_p}}
-	<input type="submit" value="Login" />
-</form>
+    <h1>{% trans 'Log in' %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+          </div>
+        <div class="col">
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-danger">{% trans 'No' %}</a>
+        </div>
+    </div>  
+    </form>
 {% endblock %}
+

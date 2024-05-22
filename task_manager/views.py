@@ -10,7 +10,9 @@ class LoginUser(LoginView):
     form_class = LoginUserForm
     success_message = _('You are logged in !')
     template_name = 'users/login.html'
-
+    extra_context = {
+                'button_text': _('Yes')
+            }
 
 
 class IndexView(View):
@@ -21,6 +23,6 @@ class IndexView(View):
             request,
             'index.html',
             context={
-                'messages': messages_
+                'messages': messages_,
             }
         )
