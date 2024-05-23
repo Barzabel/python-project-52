@@ -17,7 +17,8 @@ poetry run python manage.py makemigrations users
 poetry run python manage.py makemigrations status
 poetry run python manage.py makemigrations tasks
 poetry run python manage.py makemigrations labels
-poetry run python manage.py migrate 
+poetry run python manage.py migrate labels
+poetry run python manage.py migrate
 
 
 # if [[ $CREATE_SUPERUSER ]];
