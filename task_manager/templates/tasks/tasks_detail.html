@@ -50,14 +50,11 @@
         <div class="col">
           <h6>Метки:</h6>
           <ul>
-            
-              <li>Меткая метка111</li>
-            
-              <li>цйукцй</li>
-            
-              <li>testy</li>
-            
+            {% for label in task.labels.all %}
+              <li>{{label.name}}</li>
+            {% endfor %}
           </ul>
+
         </div>
       </div>
       <div class="row p-1">
