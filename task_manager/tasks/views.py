@@ -8,24 +8,49 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin, IsAuthorMixin
+from django_filters import FilterSet, ModelChoiceFilter, BooleanFilter
+from django_filters.views import FilterView
+from task_manager.labels.models import Label
 from .models import Task
 from .forms import CreateTaskForm
+from django import forms
 
 
-class TasksView(TemplateView):
-    template_name = "tasks/tasks.html"
+class TaskFilter(FilterSet):
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tasks_list'] = Task.objects.all()
+    labels = ModelChoiceFilter(queryset=Label.objects.all(), label=_('Label'))
 
-        return context
+    own_tasks = BooleanFilter(label=_('Only own tasks'),
+                              widget=forms.CheckboxInput,
+                              method='queryset_own_tasks',)
 
-    def get(self, request, *args, **kwargs):
-        context = super().get(request, *args, **kwargs)
-        messages_ = messages.get_messages(request)
-        context['messages'] = messages_
-        return context
+    def queryset_own_tasks(self, queryset, name, value):
+        if value:
+            user = self.request.user
+            return queryset.filter(author=user)
+        return queryset
+
+    class Meta:
+        model = Task
+        fields = (
+            'status',
+            'executor',
+        )
+
+
+class TasksView(UserLoginMixin, FilterView):
+    model = Task
+    filterset_class = TaskFilter
+    template_name = 'tasks/tasks.html'
+    context_object_name = 'tasks'
+    extra_context = {
+        'title': _('Tasks'),
+        'button_text': _('Show'),
+    }
+
+
+
+
 
 class TasksDetailView(DetailView):
     template_name = "tasks/tasks_detail.html"

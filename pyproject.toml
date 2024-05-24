@@ -15,6 +15,7 @@ whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 django-bootstrap5 = "^24.2"
 gunicorn = "^22.0.0"
 uvicorn = "^0.29.0"
+django-filter = "^24.2"
 
 
 [tool.poetry.group.dev.dependencies]

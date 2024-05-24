@@ -15,7 +15,15 @@
 
 
     <h1 class="m-4">{% trans 'Tasks' %}</h1>
-    <a href="{% url 'create_task' %}">{% trans 'Create Task' %}</a>
+    <a class="btn btn-primary mb-3" href="{% url 'create_task' %}">{% trans 'Create Task' %}</a>
+    <div class="card mb-3">
+        <div class="card-body bg-light">
+            <form class="form-inline center" method="get">
+              {% bootstrap_form filter.form field_class="ml-2 mr-3" %}
+              {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+            </form>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -30,8 +38,9 @@
         </thead>
 
         <tbody>
-            {% if tasks_list %}
-                {% for task in tasks_list %}
+            <p>{{filter}}<p>
+            {% if  tasks %}
+                {% for task in  tasks %}
                     <tr>
                         <td>{{ task.id }}</td>
                         <td>
