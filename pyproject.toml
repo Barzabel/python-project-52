@@ -16,8 +16,8 @@ django-bootstrap5 = "^24.2"
 gunicorn = "^22.0.0"
 uvicorn = "^0.29.0"
 django-filter = "^24.2"
-rollbar = "^1.0.0"
-
+rollbar = "^0.16.3"
+pytest = "^8.2.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
