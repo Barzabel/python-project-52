@@ -12,5 +12,4 @@ coverage.xml
 .pytest_cache/
 .vim
 .idea/
-poetry.lock
 *.sqlite3
