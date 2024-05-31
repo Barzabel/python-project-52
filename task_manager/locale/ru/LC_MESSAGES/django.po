@@ -126,11 +126,11 @@ msgstr "Выйти"
 
 #: task_manager/templates/hader.html:35
 msgid "Log In"
-msgstr "Войти"
+msgstr "Вход"
 
 #: task_manager/templates/hader.html:38
 msgid "Sign Up"
-msgstr "Зарегистрироваться"
+msgstr "Регистрация"
 
 #: task_manager/templates/index.html:11
 msgid "Task Manager"
