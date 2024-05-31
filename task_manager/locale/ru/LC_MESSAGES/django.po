@@ -153,7 +153,7 @@ msgstr "имя"
 #: task_manager/templates/tasks/tasks.html:27
 #: task_manager/templates/users/users.html:22
 msgid "Creation date"
-msgstr ""
+msgstr "Дата создания"
 
 #: task_manager/templates/status/status.html:29
 #: task_manager/templates/tasks/tasks.html:45

@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ user.id }}</td>
                         <td>{{ user.username }}</td>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.get_full_name }}</td>
                         <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
                         <td>
                           <a href="{% url 'update_user' pk=user.id %}">{% trans 'Update' %}</a>
