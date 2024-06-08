@@ -305,7 +305,7 @@ msgstr "новый пользователь был успешно создан"
 
 #: task_manager/users/views.py:64
 msgid "sing up"
-msgstr "Зарегистрироваться"
+msgstr "Зарегистрировать"
 
 #: task_manager/users/views.py:65
 msgid "sing up user"
