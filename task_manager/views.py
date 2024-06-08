@@ -1,18 +1,15 @@
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.views import LoginView
-from .forms import LoginUserForm
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
 
-class LoginUser(LoginView):
-    form_class = LoginUserForm
+class LoginUser(SuccessMessageMixin, LoginView):
+    '''Form log in User'''
+    template_name = 'form.html'
     success_message = _('You are logged in !')
-    template_name = 'users/login.html'
-    extra_context = {
-                'button_text': _('Yes')
-            }
 
 
 class IndexView(View):

@@ -7,7 +7,7 @@ from .models import User
 from django.views.generic.base import TemplateView
 from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
-from .forms import LoginUserForm, RegisterUserForm
+from .forms import UserForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin, AuthorizationMixin
 
@@ -56,7 +56,7 @@ class UseersView(TemplateView):
 
 
 class RegisterUser(SuccessMessageMixin, CreateView):
-    form_class = RegisterUserForm
+    form_class = UserForm
     success_url = reverse_lazy('users')
     success_message = _("the new user has been successfully created")
     template_name = 'form.html'
