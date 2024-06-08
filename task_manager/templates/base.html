@@ -13,13 +13,11 @@
     <!-- <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/512/microsoft-todo-2019.png" /> -->
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <header>
     {% include "hader.html" %}
-    </header>
-    <main class="container wrapper flex-grow-1">
+    <div class="container wrapper flex-grow-1">
         {% bootstrap_messages %}
         {% block content %}{% endblock %}
-    </main>
+    </div>
     <footer>
     {% include "footer.html" %}
     </footer>
@@ -28,3 +26,5 @@
 </html>
 
 
+
+      
