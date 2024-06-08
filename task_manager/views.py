@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -15,6 +15,14 @@ class LoginUser(SuccessMessageMixin, LoginView):
         context = super().get_context_data(**kwargs)
         context.update({'button_text': _('Enter'),})
         return context
+
+class LogoutUser(LogoutView):
+    '''Form Logout User'''
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _('You are logged out'))
+        return super().dispatch(request, *args, **kwargs)
+
 
 
 class IndexView(View):

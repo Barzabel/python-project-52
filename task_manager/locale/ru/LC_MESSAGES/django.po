@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-08 10:01+0300\n"
+"POT-Creation-Date: 2024-06-08 15:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "Изменить"
 
 #: task_manager/labels/views.py:40
 msgid "change label"
-msgstr ""
+msgstr "Изменить метку"
 
 #: task_manager/labels/views.py:48 task_manager/tasks/views.py:78
 msgid "you can't delete this task, you are not author"
@@ -64,7 +64,7 @@ msgstr "новая задача была успешно создана"
 #, fuzzy
 #| msgid "create new task"
 msgid "create new label"
-msgstr "Создать новую задачу"
+msgstr "Создать новую метку"
 
 #: task_manager/mixins.py:10
 msgid "You are not logged in! You need to log in."
@@ -105,7 +105,7 @@ msgstr "Метки"
 msgid "Only own tasks"
 msgstr "Показать задачу"
 
-#: task_manager/tasks/views.py:47 task_manager/templates/hader.html:23
+#: task_manager/tasks/views.py:47 task_manager/templates/hader.html:21
 #: task_manager/templates/tasks/tasks.html:17
 msgid "Tasks"
 msgstr "Задачи"
@@ -150,7 +150,7 @@ msgstr "Мой github"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/hader.html:13
+#: task_manager/templates/hader.html:11
 #: task_manager/templates/tasks/tasks.html:12
 #: task_manager/templates/tasks/tasks_detail.html:12
 #: task_manager/templates/users/users.html:12
@@ -158,27 +158,27 @@ msgstr "Менеджер задач"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/hader.html:17
+#: task_manager/templates/hader.html:15
 #: task_manager/templates/status/status.html:6
 #: task_manager/templates/status/status.html:9
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/templates/hader.html:20
+#: task_manager/templates/hader.html:18
 #: task_manager/templates/labels/labels.html:6
 #: task_manager/templates/labels/labels.html:9
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/templates/hader.html:30
+#: task_manager/templates/hader.html:28
 msgid "Log Out"
 msgstr "Выход"
 
-#: task_manager/templates/hader.html:35
+#: task_manager/templates/hader.html:36
 msgid "Log In"
 msgstr "Вход"
 
-#: task_manager/templates/hader.html:38
+#: task_manager/templates/hader.html:39
 msgid "Sign Up"
 msgstr "Регистрация"
 
@@ -322,6 +322,10 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:16
 msgid "Enter"
 msgstr "Войти"
+
+#: task_manager/views.py:23
+msgid "You are logged out"
+msgstr "Вы разлогинены"
 
 #~ msgid "Hello!"
 #~ msgstr "Привет!"

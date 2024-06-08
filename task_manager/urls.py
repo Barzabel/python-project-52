@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import LoginUser, IndexView
-from django.contrib.auth.views import LogoutView
+from .views import LoginUser, IndexView, LogoutUser
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
@@ -11,7 +10,7 @@ urlpatterns = [
     path('tasks/', include('task_manager.tasks.urls')),
     path('labels/', include('task_manager.labels.urls')),
     path('login/', LoginUser.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutUser.as_view(), name='logout'),
 ]
 
 #POST /logout/ — завершение сессии (выход) ?
