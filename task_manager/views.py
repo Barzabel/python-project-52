@@ -11,6 +11,11 @@ class LoginUser(SuccessMessageMixin, LoginView):
     template_name = 'form.html'
     success_message = _('You are logged in !')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({'button_text': _('Enter'),})
+        return context
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -23,3 +28,8 @@ class IndexView(View):
                 'messages': messages_,
             }
         )
+
+
+
+
+
