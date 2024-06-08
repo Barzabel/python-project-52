@@ -321,7 +321,7 @@ msgstr "Вы залогинены"
 
 #: task_manager/views.py:16
 msgid "Enter"
-msgstr "Вход"
+msgstr "Войти"
 
 #~ msgid "Hello!"
 #~ msgstr "Привет!"
