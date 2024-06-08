@@ -276,16 +276,12 @@ msgid "Full name"
 msgstr "Полное имя"
 
 #: task_manager/users/forms.py:10
-#, fuzzy
-#| msgid "Full name"
 msgid "First name"
-msgstr "Полное имя"
+msgstr "Имя"
 
 #: task_manager/users/forms.py:13
-#, fuzzy
-#| msgid "name"
 msgid "Last name"
-msgstr "имя"
+msgstr "Фамилие"
 
 #: task_manager/users/views.py:18
 msgid "the user has been successfully changed"
