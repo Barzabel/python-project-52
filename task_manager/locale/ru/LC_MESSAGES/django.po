@@ -76,7 +76,7 @@ msgstr "Имя"
 
 #: task_manager/status/views.py:33
 msgid "the status has been successfully changed"
-msgstr "статус был успешно изменен"
+msgstr "Статус успешно изменен"
 
 #: task_manager/status/views.py:36 task_manager/status/views.py:58
 #: task_manager/tasks/views.py:70
@@ -93,7 +93,7 @@ msgstr "Вы уверены, что хотите удалить этот ста�
 
 #: task_manager/status/views.py:55
 msgid "the new status has been successfully created"
-msgstr "новый статус был успешно создан"
+msgstr "Статус успешно создан"
 
 #: task_manager/tasks/views.py:21
 msgid "Label"
@@ -301,7 +301,7 @@ msgstr "Вы уверены, что хотите удалить этого по�
 
 #: task_manager/users/views.py:61
 msgid "the new user has been successfully created"
-msgstr "новый пользователь был успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:64
 msgid "sing up"
