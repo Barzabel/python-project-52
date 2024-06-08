@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse show" id="navbarToggleExternalContent" style="">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'users' %}">{% trans "Users" %}</a>
           </li>
@@ -22,14 +22,16 @@
             </li>
         </ul>
         <ul class="navbar-nav">
-            <form action="{% url 'logout' %}" method="post">
-              {% csrf_token %}
-              <input class="btm nav-link" type="submit" value="{% trans 'Log Out' %}">
+            <form action="{% url 'logout' %}" method="post" style="margin-block-end: 0;">
+                {% csrf_token %}
+                <li class="nav-item">
+                    <input class="btm nav-link" type="submit" value="{% trans 'Log Out' %}"  style="--bs-btn-padding-x: 0.75rem;">
+                </li>  
             </form>
         </ul>
         {% else %}
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
             </li>
