@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-09 11:12+0300\n"
+"POT-Creation-Date: 2024-06-09 11:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,9 +39,9 @@ msgstr "Изменить метку"
 msgid "you can't delete this task, you are not author"
 msgstr "вы не можете удалить это задание, вы не являетесь автором"
 
-#: task_manager/labels/views.py:52 task_manager/tasks/views.py:86
-msgid "the task has been successfully delete"
-msgstr "задача была успешно удалена"
+#: task_manager/labels/views.py:52
+msgid "the lable has been successfully delete"
+msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:54 task_manager/status/views.py:48
 #: task_manager/tasks/views.py:88 task_manager/users/views.py:36
@@ -151,6 +151,10 @@ msgstr "вы не можете изменить эту задачу, у вас �
 msgid "the task has been successfully changed"
 msgstr "задача была успешно изменена"
 
+#: task_manager/tasks/views.py:86
+msgid "the task has been successfully delete"
+msgstr "задача была успешно удалена"
+
 #: task_manager/tasks/views.py:89
 msgid "Are you sure that you want to delete this task ?"
 msgstr "Вы уверены, что хотите удалить это задание?"
@@ -234,7 +238,7 @@ msgstr "Дата создания"
 
 #: task_manager/templates/labels/labels.html:29
 #: task_manager/templates/status/status.html:29
-#: task_manager/templates/tasks/tasks.html:54
+#: task_manager/templates/tasks/tasks.html:53
 #: task_manager/templates/tasks/tasks_detail.html:62
 #: task_manager/templates/users/users.html:36
 msgid "Update"
@@ -242,7 +246,7 @@ msgstr "Изменить"
 
 #: task_manager/templates/labels/labels.html:31
 #: task_manager/templates/status/status.html:31
-#: task_manager/templates/tasks/tasks.html:56
+#: task_manager/templates/tasks/tasks.html:55
 #: task_manager/templates/tasks/tasks_detail.html:64
 #: task_manager/templates/users/users.html:38
 msgid "Delete"

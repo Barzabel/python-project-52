@@ -49,7 +49,7 @@ class DeleteLabel(UserLoginMixin, SuccessMessageMixin, DeleteView):
     error_redirect_url = reverse_lazy('labels_list')
     is_author_error_message = _("you can't delete this task, you are not author")
     success_url = reverse_lazy('labels_list')
-    success_message = _("the task has been successfully delete")
+    success_message = _("the lable has been successfully delete")
     extra_context = {
         'button_text': _('Yes, delete'),
         'question': _('Are you sure that you want to delete this lable?'),
