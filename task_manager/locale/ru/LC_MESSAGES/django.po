@@ -64,7 +64,7 @@ msgstr "Невозможно удалить метку, потому что он
 #, fuzzy
 #| msgid "the new task has been successfully created"
 msgid "the new lable has been successfully created"
-msgstr "новая задача была успешно создана"
+msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:80 task_manager/status/views.py:71
 #: task_manager/tasks/views.py:93
