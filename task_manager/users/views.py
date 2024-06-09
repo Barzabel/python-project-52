@@ -19,7 +19,7 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateV
     form_class = UserForm
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy('users')
     template_name_suffix = "_update_form"
     extra_context = {
         'button_text': _('Change'),
