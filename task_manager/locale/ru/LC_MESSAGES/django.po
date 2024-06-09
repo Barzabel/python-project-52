@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-09 11:28+0300\n"
+"POT-Creation-Date: 2024-06-09 11:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgid "name"
 msgstr "Имя"
 
 #: task_manager/tasks/forms.py:15
-msgid "body"
+msgid "description"
 msgstr "Описание"
 
 #: task_manager/tasks/forms.py:16 task_manager/tasks/models.py:18
@@ -335,6 +335,9 @@ msgstr "Войти"
 #: task_manager/views.py:23
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "body"
+#~ msgstr "Описание"
 
 #~ msgid "Body"
 #~ msgstr "Описание"
