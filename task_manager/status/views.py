@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
+from task_manager.tasks.models import Task
 from task_manager.mixins import UserLoginMixin
 from .models import Status
 from .forms import CreateStatusForm
@@ -47,6 +49,18 @@ class DeleteStatus(UserLoginMixin, SuccessMessageMixin, DeleteView):
         'question': _('Are you sure that you want to delete this status ?')
     }
 
+    def post(self, request, *args, **kwargs):
+        status_id = kwargs['pk']
+        tasks_with_status = Task.objects.filter(status=status_id)
+
+        if tasks_with_status:
+            messages.error(
+                self.request,
+                _('It is not possible to delete a status '
+                  'because it is in use')
+            )
+            return redirect('status_list')
+        return super().post(request, *args, **kwargs)
 
 class CreateStatus(UserLoginMixin, SuccessMessageMixin, CreateView):
     form_class = CreateStatusForm
