@@ -16,7 +16,7 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateV
     model = User
     success_url = reverse_lazy('users')
     success_message = _("the user has been successfully changed")
-    fields = ['username', 'email', 'first_name', 'last_name']
+    form_class = UserForm
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy("home")
