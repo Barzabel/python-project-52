@@ -126,7 +126,7 @@ msgstr "Метки"
 
 #: task_manager/tasks/views.py:21
 msgid "Label"
-msgstr "Метки"
+msgstr "Метка"
 
 #: task_manager/tasks/views.py:23
 msgid "Only own tasks"
@@ -260,7 +260,7 @@ msgstr "Создать задачу"
 
 #: task_manager/templates/tasks/tasks.html:33
 msgid "author"
-msgstr "автор"
+msgstr "Автор"
 
 #: task_manager/templates/tasks/tasks_detail.html:22
 msgid "Show task"
