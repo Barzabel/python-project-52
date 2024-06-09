@@ -147,11 +147,11 @@ msgstr "вы не можете изменить эту задачу, у вас �
 
 #: task_manager/tasks/views.py:73
 msgid "the task has been successfully changed"
-msgstr "задача была успешно изменена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:86
 msgid "the task has been successfully delete"
-msgstr "задача была успешно удалена"
+msgstr "Задача успешно удалена"
 
 #: task_manager/tasks/views.py:89
 msgid "Are you sure that you want to delete this task ?"
