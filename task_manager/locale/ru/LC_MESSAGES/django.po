@@ -138,10 +138,8 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/tasks/views.py:54
-#, fuzzy
-#| msgid "Show task"
 msgid "Show"
-msgstr "Показать задачу"
+msgstr "Показать"
 
 #: task_manager/tasks/views.py:71
 msgid "you can't change this task, you are not author"
