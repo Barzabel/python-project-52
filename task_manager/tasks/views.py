@@ -79,7 +79,7 @@ class DeleteTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, DeleteView)
     success_url = reverse_lazy('tasks_list')
     success_message = _("the task has been successfully delete")
     extra_context = {
-        'button_text': _('Yes'),
+        'button_text': _('Yes, delete'),
         'question': _('Are you sure that you want to delete this task ?'),
     }
 

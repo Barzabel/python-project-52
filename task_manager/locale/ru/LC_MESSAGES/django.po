@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-09 09:35+0300\n"
+"POT-Creation-Date: 2024-06-09 10:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "the lable has been successfully changed"
 msgstr "задача была успешно изменена"
 
 #: task_manager/labels/views.py:41 task_manager/status/views.py:37
-#: task_manager/tasks/views.py:69
+#: task_manager/tasks/views.py:69 task_manager/users/views.py:25
 msgid "Change"
 msgstr "Изменить"
 
@@ -41,12 +41,10 @@ msgstr "вы не можете удалить это задание, вы не �
 msgid "the task has been successfully delete"
 msgstr "задача была успешно удалена"
 
-#: task_manager/labels/views.py:54 task_manager/labels/views.py:80
-#: task_manager/status/views.py:48 task_manager/status/views.py:71
-#: task_manager/tasks/views.py:82 task_manager/tasks/views.py:93
-#: task_manager/users/views.py:25 task_manager/users/views.py:36
-msgid "Yes"
-msgstr "Да"
+#: task_manager/labels/views.py:54 task_manager/status/views.py:48
+#: task_manager/tasks/views.py:82 task_manager/users/views.py:36
+msgid "Yes, delete"
+msgstr "Да, удалить"
 
 #: task_manager/labels/views.py:55
 #, fuzzy
@@ -63,6 +61,11 @@ msgstr "Невозможно удалить метку, потому что он
 #| msgid "the new task has been successfully created"
 msgid "the new lable has been successfully created"
 msgstr "новая задача была успешно создана"
+
+#: task_manager/labels/views.py:80 task_manager/status/views.py:71
+#: task_manager/tasks/views.py:93
+msgid "Yes"
+msgstr "Да"
 
 #: task_manager/labels/views.py:81
 #, fuzzy

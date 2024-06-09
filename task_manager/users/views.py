@@ -22,7 +22,7 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateV
     success_url = reverse_lazy("home")
     template_name_suffix = "_update_form"
     extra_context = {
-        'button_text': _('Yes'),
+        'button_text': _('Change'),
     }
 
 class DeleteUser(UserLoginMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
@@ -33,7 +33,7 @@ class DeleteUser(UserLoginMixin, AuthorizationMixin, SuccessMessageMixin, Delete
     permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy('users')
     extra_context = {
-        'button_text': _('Yes'),
+        'button_text': _('Yes, delete'),
         'question': _('Are you sure that you want to delete this user?')
     }
 
