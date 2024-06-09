@@ -90,7 +90,7 @@ class CreateTask(UserLoginMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('tasks_list')
     success_message = _("the new task has been successfully created")
     extra_context = {
-        'button_text': _('Yes'),
+        'button_text': _('Create'),
         'title': _('create new task')
 
     }

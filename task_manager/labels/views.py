@@ -77,7 +77,7 @@ class CreateLabel(UserLoginMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('labels_list')
     success_message = _("the new lable has been successfully created")
     extra_context = {
-        'button_text': _('Yes'),
+        'button_text': _('Create'),
         'title': _('create new label')
 
     }
