@@ -36,6 +36,12 @@ class TaskFilter(FilterSet):
             'status',
             'executor',
         )
+        labels = {
+            'status': _('status'),
+            'executor': _('executor'),
+
+        }
+
 
 
 class TasksView(UserLoginMixin, FilterView):
