@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-09 10:26+0300\n"
+"POT-Creation-Date: 2024-06-09 10:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: task_manager/labels/forms.py:8 task_manager/status/forms.py:8
+msgid "Name"
+msgstr "Имя"
 
 #: task_manager/labels/views.py:39
 #, fuzzy
@@ -75,10 +79,6 @@ msgstr "Создать новую метку"
 msgid "You are not logged in! You need to log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/status/forms.py:8
-msgid "Name"
-msgstr "Имя"
-
 #: task_manager/status/views.py:35
 msgid "the status has been successfully changed"
 msgstr "Статус успешно изменен"
@@ -103,6 +103,28 @@ msgstr "Невозможно удалить статус, потому что о
 #: task_manager/status/views.py:69
 msgid "the new status has been successfully created"
 msgstr "Статус успешно создан"
+
+#: task_manager/tasks/forms.py:14 task_manager/templates/labels/labels.html:15
+#: task_manager/templates/status/status.html:15
+#: task_manager/templates/tasks/tasks.html:31
+msgid "name"
+msgstr "Имя"
+
+#: task_manager/tasks/forms.py:15
+msgid "body"
+msgstr "Описание"
+
+#: task_manager/tasks/forms.py:16 task_manager/templates/tasks/tasks.html:32
+msgid "status"
+msgstr "Статус"
+
+#: task_manager/tasks/forms.py:17 task_manager/templates/tasks/tasks.html:34
+msgid "executor"
+msgstr "Исполнитель"
+
+#: task_manager/tasks/forms.py:18
+msgid "labels"
+msgstr "Метки"
 
 #: task_manager/tasks/views.py:21
 msgid "Label"
@@ -207,12 +229,6 @@ msgstr "Начать"
 msgid "Create Label"
 msgstr "Создать метку"
 
-#: task_manager/templates/labels/labels.html:15
-#: task_manager/templates/status/status.html:15
-#: task_manager/templates/tasks/tasks.html:31
-msgid "name"
-msgstr "имя"
-
 #: task_manager/templates/labels/labels.html:16
 #: task_manager/templates/status/status.html:16
 #: task_manager/templates/tasks/tasks.html:35
@@ -244,17 +260,9 @@ msgstr "Создать статус"
 msgid "Create Task"
 msgstr "Создать задачу"
 
-#: task_manager/templates/tasks/tasks.html:32
-msgid "status"
-msgstr "статус"
-
 #: task_manager/templates/tasks/tasks.html:33
 msgid "author"
 msgstr "автор"
-
-#: task_manager/templates/tasks/tasks.html:34
-msgid "executor"
-msgstr "исполнитель"
 
 #: task_manager/templates/tasks/tasks_detail.html:22
 msgid "Show task"
@@ -329,6 +337,9 @@ msgstr "Войти"
 #: task_manager/views.py:23
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Body"
+#~ msgstr "Описание"
 
 #~ msgid "Yes"
 #~ msgstr "Да"
