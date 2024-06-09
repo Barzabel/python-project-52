@@ -23,10 +23,8 @@ msgid "Name"
 msgstr "Имя"
 
 #: task_manager/labels/views.py:39
-#, fuzzy
-#| msgid "the task has been successfully changed"
 msgid "the lable has been successfully changed"
-msgstr "задача была успешно изменена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:41 task_manager/status/views.py:37
 #: task_manager/tasks/views.py:75 task_manager/users/views.py:25
