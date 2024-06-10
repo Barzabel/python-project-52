@@ -2,7 +2,7 @@ from django.views.generic import CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.views.generic.base import TemplateView
 from django.contrib import messages
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
@@ -15,6 +15,7 @@ from .forms import CreateStatusForm
 class StatusView(UserLoginMixin, TemplateView):
     template_name = "status/status.html"
     auth_messages = None
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['status_list'] = Status.objects.all()
@@ -27,6 +28,7 @@ class StatusView(UserLoginMixin, TemplateView):
         context['messages'] = messages_
         return context
 
+
 class UpdateStatus(UserLoginMixin, SuccessMessageMixin, UpdateView):
     model = Status
     form_class = CreateStatusForm
@@ -38,6 +40,7 @@ class UpdateStatus(UserLoginMixin, SuccessMessageMixin, UpdateView):
         'title': _('create new status')
 
     }
+
 
 class DeleteStatus(UserLoginMixin, SuccessMessageMixin, DeleteView):
     model = Status
@@ -61,6 +64,7 @@ class DeleteStatus(UserLoginMixin, SuccessMessageMixin, DeleteView):
             )
             return redirect('status_list')
         return super().post(request, *args, **kwargs)
+
 
 class CreateStatus(UserLoginMixin, SuccessMessageMixin, CreateView):
     form_class = CreateStatusForm

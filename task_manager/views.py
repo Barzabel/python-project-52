@@ -13,8 +13,9 @@ class LoginUser(SuccessMessageMixin, LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update({'button_text': _('Enter'),})
+        context.update({'button_text': _('Enter')})
         return context
+
 
 class LogoutUser(LogoutView):
     '''Form Logout User'''
@@ -22,7 +23,6 @@ class LogoutUser(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.info(request, _('You are logged out'))
         return super().dispatch(request, *args, **kwargs)
-
 
 
 class IndexView(View):
@@ -36,8 +36,3 @@ class IndexView(View):
                 'messages': messages_,
             }
         )
-
-
-
-
-

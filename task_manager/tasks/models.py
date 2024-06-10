@@ -10,26 +10,22 @@ class Task(models.Model):
     name = models.CharField(max_length=150, blank=False, unique=True)
     description = models.TextField(max_length=1000, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
-    status = models.ForeignKey(
-                        Status,
-                        related_name='status',
-                        on_delete=models.CASCADE,
-                        verbose_name=_('status')
-                    )
-    executor = models.ForeignKey(
-                            User,
-                            related_name='executor',
-                            on_delete=models.CASCADE,
-                            verbose_name=_('executor')
-                        )
-    labels = models.ManyToManyField(
-                                Label, 
-                                through='TaskLabels', 
-                                through_fields=('task', 'label'),
-                                blank=True,
-                                related_name='labels',
-                            )
+    author = models.ForeignKey(User,
+                               related_name='author',
+                               on_delete=models.CASCADE)
+    status = models.ForeignKey(Status,
+                               related_name='status',
+                               on_delete=models.CASCADE,
+                               verbose_name=_('status'))
+    executor = models.ForeignKey(User,
+                                 related_name='executor',
+                                 on_delete=models.CASCADE,
+                                 verbose_name=_('executor'))
+    labels = models.ManyToManyField(Label,
+                                    through='TaskLabels',
+                                    through_fields=('task', 'label'),
+                                    blank=True,
+                                    related_name='labels',)
 
     def __str__(self):
         return self.name

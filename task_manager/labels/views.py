@@ -1,11 +1,10 @@
 from django.views.generic import (CreateView,
                                   UpdateView,
-                                  DeleteView,
-                                  DetailView)
+                                  DeleteView,)
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin
@@ -43,11 +42,14 @@ class UpdateLabel(UserLoginMixin, SuccessMessageMixin, UpdateView):
 
     }
 
+
 class DeleteLabel(UserLoginMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = 'delete.html'
     error_redirect_url = reverse_lazy('labels_list')
-    is_author_error_message = _("you can't delete this task, you are not author")
+    is_author_error_message = _(
+        "you can't delete this task, you are not author"
+    )
     success_url = reverse_lazy('labels_list')
     success_message = _("the lable has been successfully delete")
     extra_context = {
@@ -67,8 +69,6 @@ class DeleteLabel(UserLoginMixin, SuccessMessageMixin, DeleteView):
             )
             return redirect('labels_list')
         return super().post(request, *args, **kwargs)
-
-
 
 
 class CreateLabel(UserLoginMixin, SuccessMessageMixin, CreateView):

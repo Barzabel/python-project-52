@@ -12,5 +12,3 @@ urlpatterns = [
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', LogoutUser.as_view(), name='logout'),
 ]
-
-#POST /logout/ — завершение сессии (выход) ?

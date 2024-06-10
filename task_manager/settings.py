@@ -14,7 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 import os
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +30,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['task-manager-sinr.onrender.com', ".hexlet.app", "webserver", "localhost", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = [
+    'task-manager-sinr.onrender.com',
+    ".hexlet.app", "webserver",
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0"
+]
 
 
 # Application definition
@@ -46,7 +52,7 @@ INSTALLED_APPS = [
     'django_filters',
     'task_manager',
     'task_manager.users',
-    'task_manager.status',    
+    'task_manager.status',
     'task_manager.tasks',
     'task_manager.labels',
 ]
@@ -99,8 +105,8 @@ DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
         default=os.getenv('DATABASE_URL'),
-        conn_max_age=600
-    )
+        conn_max_age=600,
+    ),
 }
 
 # Password validation
@@ -108,23 +114,13 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME':
-            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa: E501
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-        "OPTIONS": {
-            "min_length": 3,
-        },
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa: E501
+        "OPTIONS": {"min_length": 3, },
     },
 ]
-
-
-
-
-
-
-
 
 AUTH_USER_MODEL = "users.User"
 
@@ -141,24 +137,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
 
-# Following settings only make sense on production and may break development environments.
+
 if not DEBUG:
-    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # noqa: E501
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

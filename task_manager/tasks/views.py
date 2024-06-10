@@ -2,9 +2,7 @@ from django.views.generic import (CreateView,
                                   UpdateView,
                                   DeleteView,
                                   DetailView)
-from django.views.generic.base import TemplateView
-from django.contrib import messages
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin, IsAuthorMixin
@@ -43,7 +41,6 @@ class TaskFilter(FilterSet):
         }
 
 
-
 class TasksView(UserLoginMixin, FilterView):
     model = Task
     filterset_class = TaskFilter
@@ -55,20 +52,20 @@ class TasksView(UserLoginMixin, FilterView):
     }
 
 
-
-
-
 class TasksDetailView(DetailView):
     template_name = "tasks/tasks_detail.html"
     model = Task
 
 
-class UpdateTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, UpdateView):
+class UpdateTask(UserLoginMixin,
+                 SuccessMessageMixin,
+                 IsAuthorMixin,
+                 UpdateView):
     model = Task
     form_class = CreateTaskForm
     template_name = "form.html"
     error_redirect_url = reverse_lazy('tasks_list')
-    is_author_error_message = _("you can't change this task, you are not author")
+    is_author_error_message = _("you can't change this task, you are not author")  # noqa: E501
     success_url = reverse_lazy('tasks_list')
     success_message = _("the task has been successfully changed")
     extra_context = {
@@ -77,11 +74,15 @@ class UpdateTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, UpdateView)
 
     }
 
-class DeleteTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, DeleteView):
+
+class DeleteTask(UserLoginMixin,
+                 SuccessMessageMixin,
+                 IsAuthorMixin,
+                 DeleteView):
     model = Task
     template_name = 'delete.html'
     error_redirect_url = reverse_lazy('tasks_list')
-    is_author_error_message = _("you can't delete this task, you are not author")
+    is_author_error_message = _("you can't delete this task, you are not author")  # noqa: E501
     success_url = reverse_lazy('tasks_list')
     success_message = _("the task has been successfully delete")
     extra_context = {
@@ -90,7 +91,9 @@ class DeleteTask(UserLoginMixin, SuccessMessageMixin, IsAuthorMixin, DeleteView)
     }
 
 
-class CreateTask(UserLoginMixin, SuccessMessageMixin, CreateView):
+class CreateTask(UserLoginMixin,
+                 SuccessMessageMixin,
+                 CreateView):
     form_class = CreateTaskForm
     template_name = "form.html"
     success_url = reverse_lazy('tasks_list')
@@ -100,6 +103,7 @@ class CreateTask(UserLoginMixin, SuccessMessageMixin, CreateView):
         'title': _('create new task')
 
     }
+
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.

@@ -1,7 +1,5 @@
-from django.shortcuts import render
-from django.views import View
 from django.contrib import messages
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from .models import User
 from django.views.generic.base import TemplateView
@@ -12,12 +10,19 @@ from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import UserLoginMixin, AuthorizationMixin
 
 
-class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateView):
+class UpdateUser(UserLoginMixin,
+                 AuthorizationMixin,
+                 SuccessMessageMixin,
+                 UpdateView):
     model = User
     success_url = reverse_lazy('users')
-    success_message = _("the user has been successfully changed")
+    success_message = _(
+        "the user has been successfully changed"
+    )
     form_class = UserForm
-    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_message = _(
+        "You can't change this profile, this is not you"
+    )
     permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy('users')
     template_name_suffix = "_update_form"
@@ -25,18 +30,25 @@ class UpdateUser(UserLoginMixin,AuthorizationMixin, SuccessMessageMixin, UpdateV
         'button_text': _('Change'),
     }
 
-class DeleteUser(UserLoginMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
+
+class DeleteUser(UserLoginMixin,
+                 AuthorizationMixin,
+                 SuccessMessageMixin,
+                 DeleteView):
     model = User
     success_message = _("the user has been deleted")
     template_name = 'delete.html'
-    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_message = _(
+        "You can't change this profile, this is not you"
+    )
     permission_denied_url = reverse_lazy('users')
     success_url = reverse_lazy('users')
     extra_context = {
         'button_text': _('Yes, delete'),
-        'question': _('Are you sure that you want to delete this user?')
+        'question': _(
+            'Are you sure that you want to delete this user?'
+        )
     }
-
 
 
 class UseersView(TemplateView):

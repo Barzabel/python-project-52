@@ -2,8 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
 from django.contrib import messages
-from django.urls import reverse, reverse_lazy
-
+from django.urls import reverse_lazy
 
 
 class UserLoginMixin(LoginRequiredMixin):
@@ -33,9 +32,11 @@ class AuthorizationMixin(UserPassesTestMixin):
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_denied_url)
 
+
 class IsAuthorMixin:
     error_redirect_url = None
     is_author_error_message = None
+
     def dispatch(self, request, *args, **kwargs):
         if self.get_object().author.id != request.user.id:
             messages.error(self.request, self.is_author_error_message)
