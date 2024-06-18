@@ -2,6 +2,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Barzabel/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Barzabel/python-project-52/actions)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/75e07fc96edc23ea3ad0/maintainability)](https://codeclimate.com/github/Barzabel/python-project-52/maintainability)
+
 ## Описание
 Task Manager – система управления задачами, подобная http://www.redmine.org/. Она позволяет ставить задачи, назначать исполнителей и менять их статусы. Для работы с системой требуется регистрация и аутентификация:
 [главная страница](https://cdn2.hexlet.io/store/derivatives/original/9451670938b805cdd8f53b0670aaa8ed.png)

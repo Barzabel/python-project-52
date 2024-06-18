@@ -18,11 +18,11 @@ gunicorn = "^22.0.0"
 uvicorn = "^0.29.0"
 django-filter = "^24.2"
 rollbar = "^0.16.3"
-pytest = "^8.2.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
 coverage = "^7.5.1"
+pytest = "^8.2.2"
 
 [build-system]
 requires = ["poetry-core"]
