@@ -108,7 +108,10 @@ class LabelDeleteTest(SetUpTestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('labels_list'))
-
+        self.assertEqual(
+            Label.objects.filter(pk=self.label_to_delete.pk).first(),
+            None
+        )
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertIn(str(messages[0]), [

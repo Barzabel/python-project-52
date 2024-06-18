@@ -68,7 +68,7 @@ class CreateStatusTest(SetUpTestCase):
         ])
 
 
-class LabelStatusTest(SetUpTestCase):
+class StatusUpdateTest(SetUpTestCase):
     def test_label_update_view(self):
         response = self.client.get(reverse_lazy('update_status',
                                                 kwargs={'pk': self.status.pk}))
