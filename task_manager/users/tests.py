@@ -1,7 +1,4 @@
 from django.test import TestCase
-
-
-from django.test import TestCase
 from django.contrib.messages import get_messages
 from django.urls import reverse_lazy
 from task_manager.users.models import User
@@ -51,14 +48,13 @@ class SetUpTestCase(TestCase):
         )
 
 
-
 class CreateUserTest(SetUpTestCase):
     def test_status_create_view(self):
         self.client.logout()
         response = self.client.get(reverse_lazy('singup'))
         self.assertEqual(response.status_code, 200)
 
-    def test_status_create_success(self):
+    def test_user_create_success(self):
         self.client.logout()
         response = self.client.post(reverse_lazy('singup'), {
             "first_name": 'testUserVasya',
@@ -80,7 +76,7 @@ class CreateUserTest(SetUpTestCase):
         self.assertEqual(response.status_code, 200)
         response = self.client.post(
             reverse_lazy('login'),
-            {'username': 'testUser', 'password':'123test123',})
+            {'username': 'testUser', 'password': '123test123', })
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('home'))
 
@@ -93,11 +89,10 @@ class CreateUserTest(SetUpTestCase):
 
 
 class UserUpdateTest(SetUpTestCase):
-    def test_label_update_view(self):
+    def test_user_update_view(self):
         response = self.client.get(reverse_lazy('update_user',
                                                 kwargs={'pk': self.user.pk}))
         self.assertEqual(response.status_code, 200)
-
 
     def test_user_update_success(self):
         new_data = {
@@ -107,8 +102,8 @@ class UserUpdateTest(SetUpTestCase):
             "password1": '123test123',
             "password2": '123test123',
         }
-        response = self.client.post(reverse_lazy('update_user', 
-                                    kwargs={'pk': self.user.pk}), 
+        response = self.client.post(reverse_lazy('update_user',
+                                    kwargs={'pk': self.user.pk}),
                                     new_data)
 
         self.assertEqual(response.status_code, 302)
@@ -136,7 +131,7 @@ class UserUpdateTest(SetUpTestCase):
 
 
 class UserDeleteTest(SetUpTestCase):
-    def test_status_delete_view(self):
+    def test_user_delete_view(self):
         response = self.client.get(
             reverse_lazy('delete_user',
                          kwargs={'pk': self.user.pk})
@@ -144,7 +139,7 @@ class UserDeleteTest(SetUpTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_status_delete_success(self):
+    def test_user_delete_success(self):
         response = self.client.post(
             reverse_lazy('delete_user',
                          kwargs={'pk': self.user.pk})
@@ -164,7 +159,7 @@ class UserDeleteTest(SetUpTestCase):
             'Пользователь успешно удален'
         ])
 
-    def test_protect_status_delete(self):
+    def test_protect_user_delete(self):
         response = self.client.post(reverse_lazy('delete_user',
                                                  kwargs={'pk': self.user2.pk}))
         self.assertEqual(response.status_code, 302)

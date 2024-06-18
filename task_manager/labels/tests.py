@@ -38,7 +38,7 @@ class SetUpTestCase(TestCase):
         self.label = Label.objects.create(name='IMPORTANT')
         self.label.save()
         self.label_to_delete = Label.objects.create(name='worng')
-        self.label.save()
+        self.label_to_delete.save()
 
         # Create task
         self.task = Task.objects.create(
