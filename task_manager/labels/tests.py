@@ -13,8 +13,9 @@ class SetUpTestCase(TestCase):
     def setUp(self):
         # Create user author
         self.user = User.objects.create(
-            first_name='Tony', last_name='Soprano',
-            username='boss_of_newark',
+
+            first_name='user_name', last_name='user_last_name',
+            username='Test_user1',
         )
         self.user.set_password('dqweRty21')
         self.user.save()
@@ -22,7 +23,7 @@ class SetUpTestCase(TestCase):
         # Create user executor
         self.user2 = User.objects.create(
             first_name='Cris', last_name='Moltisanti',
-            username='real_og',
+            username='Test_user2',
         )
         self.user2.set_password('Alsfkqwo21')
         self.user2.save()
@@ -36,17 +37,21 @@ class SetUpTestCase(TestCase):
 
         self.label = Label.objects.create(name='IMPORTANT')
         self.label.save()
+        self.label_to_delete = Label.objects.create(name='worng')
+        self.label.save()
 
         # Create task
         self.task = Task.objects.create(
-            name='go to home',
-            description='a need to go home',
+            name='test tasks',
+            description='a description test tasks',
             status=Status.objects.get(pk=self.status.pk),
             executor=User.objects.get(pk=self.user.pk),
             author=self.user
         )
+        self.task.save()
+        self.task.labels.add(self.label.pk)
         self.client.login(
-            username='boss_of_newark', password='dqweRty21',
+            username='Test_user1', password='dqweRty21',
         )
 
 
@@ -90,13 +95,17 @@ class LabelUpdateTest(SetUpTestCase):
 
 class LabelDeleteTest(SetUpTestCase):
     def test_label_delete_view(self):
-        response = self.client.get(reverse_lazy('delete_label',
-                                                kwargs={'pk': self.label.pk}))
+        response = self.client.get(
+            reverse_lazy('delete_label',
+                         kwargs={'pk': self.label_to_delete.pk})
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_label_delete_success(self):
-        response = self.client.post(reverse_lazy('delete_label',
-                                                 kwargs={'pk': self.label.pk}))
+        response = self.client.post(
+            reverse_lazy('delete_label',
+                         kwargs={'pk': self.label_to_delete.pk})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('labels_list'))
 
@@ -105,4 +114,17 @@ class LabelDeleteTest(SetUpTestCase):
         self.assertIn(str(messages[0]), [
             'Label successfully deleted',
             'Метка успешно удалена'
+        ])
+
+    def test_protect_label_delete(self):
+        response = self.client.post(reverse_lazy('delete_label',
+                                                 kwargs={'pk': self.label.pk}))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('labels_list'))
+
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertIn(str(messages[0]), [
+            'It is not possible to delete a label because it is in use',
+            'Невозможно удалить метку, потому что она используется'
         ])
