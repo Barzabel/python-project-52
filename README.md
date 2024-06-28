@@ -28,6 +28,6 @@ Task Manager – система управления задачами, подо�
 ***
 ## Демонстрация работы программы:
 
-* [link](https;//task-manager-sinr.onrender.com/s)
+* [link](https://task-manager-sinr.onrender.com/)
 
 
