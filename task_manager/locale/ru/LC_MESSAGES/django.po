@@ -37,7 +37,7 @@ msgstr "Изменить метку"
 
 #: task_manager/labels/views.py:50 task_manager/tasks/views.py:84
 msgid "you can't delete this task, you are not author"
-msgstr "вы не можете удалить это задание, вы не являетесь автором"
+msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/labels/views.py:52
 msgid "the lable has been successfully delete"
